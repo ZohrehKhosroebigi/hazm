@@ -2,6 +2,7 @@ import nltk
 import re
 from hazm import *
 import os
+from writing import Writelogs
 class JacardSimilarity():
     def jacardsimilarity(self,doc1_name, doc2_name):
             #hazm test
@@ -22,4 +23,6 @@ class JacardSimilarity():
            #jacard
             intersection = set(lem_query).intersection(set(lem_doc))
             union = set(lem_query).union(set(lem_doc))
+            writeresult=Writelogs()
+            writeresult.writing(str(len(intersection)/len(union)))
             print("jacard distance is ------"+str(len(intersection)/len(union)))
