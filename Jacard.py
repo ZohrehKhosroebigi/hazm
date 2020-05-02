@@ -26,9 +26,10 @@ class JacardSimilarity():
                     print(word)
                     lem_query.append(hazm_lemmatizer.lemmatize(word))
             print("lemmitzaton query---"+str(lem_query))
+           #jacard
             intersection = set(lem_query).intersection(set(lem_doc))
             union = set(lem_query).union(set(lem_doc))
-            print(len(intersection)/len(union))
+            print("jacard distance is ------"+str(len(intersection)/len(union)))
 
             fhandw = open('logs/lemm_doc.txt', 'w', encoding='utf8')
             b = " ".join(str(e) for e in lem_doc)

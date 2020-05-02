@@ -11,10 +11,10 @@ doc2 = open('logs/lemm_query.txt', 'r', encoding='utf8')
 
 for line in doc1:
     #dataset1=line
-    dataset1 = "سلام"
+    dataset1 = 'a little bird'
 for line in doc2:
     #dataset2=line
-    dataset2 = "خدااحافظ"
+    dataset2 = 'a little bird chirps'
 
 dataset = [dataset1,dataset2]
 

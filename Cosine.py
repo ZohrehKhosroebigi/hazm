@@ -1,26 +1,31 @@
-# Scikit Learn
-from sklearn.feature_extraction.text import CountVectorizer
-import pandas as pd
-# Define the documents
-doc_trump = "Mr. Trump became president after winning the political election. Though he lost the support of some republican friends, Trump is friends with President Putin"
-
-doc_election = "President Trump says Putin had no political interference is the election outcome. He says it was a witchhunt by political parties. He claimed President Putin is a friend who had nothing to do with the election"
-
-doc_putin = "Post elections, Vladimir Putin became President of Russia. President Putin had served as the Prime Minister earlier in his political career"
-
-documents = [doc_trump, doc_election, doc_putin]
-# Create the Document Term Matrix
-#count_vectorizer = CountVectorizer(stop_words='english')
-count_vectorizer = CountVectorizer()
-sparse_matrix = count_vectorizer.fit_transform(documents)
-
-# OPTIONAL: Convert Sparse Matrix to Pandas Dataframe if you want to see the word frequencies.
-doc_term_matrix = sparse_matrix.todense()
-df = pd.DataFrame(doc_term_matrix, 
-                  columns=count_vectorizer.get_feature_names(), 
-                  index=['doc_trump', 'doc_election', 'doc_putin'])
-print(df)
-
-# Compute Cosine Similarity
+import logging
+import numpy
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-print(cosine_similarity(df, df))
+class CosineSimilarity():
+    def cosinesimilarity(self,doc1,doc2):
+
+        logging.basicConfig(level=logging.DEBUG,filename='logs/cosine.logs', filemode='w')
+        #doc1 = open(doc1, 'r', encoding='utf8')
+        #doc2 = open(doc2, 'r', encoding='utf8')
+
+        doc1 = open('logs/lemm_doc.txt', 'r', encoding='utf8')
+        doc2 = open('logs/lemm_query.txt', 'r', encoding='utf8')
+
+        for line in doc1:
+            dataset1=line
+            #dataset1 = 'خدا'
+        for line in doc2:
+            dataset2=line
+            #dataset2 = 'خدا حافظ'
+        dataset = [dataset1,dataset2]
+        vectorizer = TfidfVectorizer()
+        X_tfidf = vectorizer.fit_transform(dataset)
+         # ...you say you are already at this point here...
+
+        sims = cosine_similarity(X_tfidf, X_tfidf)
+        rank = list(reversed(numpy.argsort(sims[0])))
+
+        #logging.debug("\nTdidf: \n%s" % X_tfidf.toarray())
+        logging.debug("\nSims: \n%s", sims)
+        logging.debug("\nRank: \n%s", rank)
