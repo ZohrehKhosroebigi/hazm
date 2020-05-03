@@ -11,6 +11,7 @@ persian_token.token(persian_norm.name)
 
 persian_norm1=Normal()
 persian_norm1.nomal('logs/doc2.txt')
+
 persian_token1=Tokenization()
 persian_token1.token(persian_norm1.name)
 

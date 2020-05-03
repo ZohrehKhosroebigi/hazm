@@ -17,15 +17,15 @@ class Lemmiz():
                 # print(line)
                 words = re.findall(r'\w+', line)
                 for word in words:
-                    print(word)
+                    #print(word)
                     lem_doc.append(hazm_lemmatizer.lemmatize(word))
-            print("lemmitzaton doc---" + str(lem_doc))
+            #print("lemmitzaton doc---" + str(lem_doc))
             for line in doc2:
                 words = re.findall(r'\w+', line)
                 for word in words:
-                    print(word)
+                    #print(word)
                     lem_query.append(hazm_lemmatizer.lemmatize(word))
-            print("lemmitzaton query---" + str(lem_query))
+            #print("lemmitzaton query---" + str(lem_query))
             self.name_lem_doc='logs/lemm_doc.txt'
             fhandw = open(self.name_lem_doc, 'w', encoding='utf8')
             b = " ".join(str(e) for e in lem_doc)

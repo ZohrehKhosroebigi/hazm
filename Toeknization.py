@@ -10,6 +10,6 @@ class Tokenization():
         tokenizer = nltk.RegexpTokenizer(r"\w+")
         for line in doc:
             token_query = tokenizer.tokenize(line)
-            print("token_query----"+str(token_query))
+            #print("token_query----"+str(token_query))
             fhandw.write(str(token_query))
         return self.name
